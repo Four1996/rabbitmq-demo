@@ -32,6 +32,7 @@ public class ProducerTest {
     public void testConfirm(){
         //2、定义回调函数
         rabbitTemplate.setConfirmCallback(new RabbitTemplate.ConfirmCallback() {
+
             /**
              correlationData:相关配置信息
              ack: exchange交换机是否成功收到消息。true成功，false代表失败
@@ -88,6 +89,6 @@ public class ProducerTest {
             }
         });
         //3、发送消息
-        rabbitTemplate.convertAndSend("test_exchange_confirm","confirm111","message comfirm....");
+        rabbitTemplate.convertAndSend("test_exchange_confirm","confirm","message comfirm....");
     }
 }
