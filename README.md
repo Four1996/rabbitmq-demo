@@ -13,4 +13,9 @@ rabbitmq简单练习<br/>
 2、一个消费者可以绑定多个消息队列。<br/>
 **"Topics工作模式"：**<br/>
 1、与路由模式不同的是，采用通配符的模式进行路由key的匹配。<br/>
-2、同样，一个消费者可以绑定多个消息队列。
+2、同样，一个消费者可以绑定多个消息队列。<br/>
+**SpringBoot整合RabbitMQ:**<br/>
+1、SpringBoot提供了快速整合RabbitMQ的方式<br/>
+2、基本信息在yml中配置（rabbitmq主机地址、端口号、用户名、密码、虚拟机路径）,队列交互机以及绑定关系在配置类中使用Bean的方式配置<br/>
+3、生产端直接注入RabbitTemlplate完成消息发送<br/>
+4、消费端直接使用@RabbitListener完成消息接受。<br/>

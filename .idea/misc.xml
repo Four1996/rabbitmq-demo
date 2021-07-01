@@ -9,10 +9,12 @@
         <option value="$PROJECT_DIR$/../spring-rabbitmq-consumers/pom.xml" />
         <option value="$PROJECT_DIR$/spring-rabbitmq-consumers/pom.xml" />
         <option value="$PROJECT_DIR$/spring-rabbitmq-produces/pom.xml" />
+        <option value="$PROJECT_DIR$/producer-springboot/pom.xml" />
+        <option value="$PROJECT_DIR$/consumer-springboot/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_13" default="true" project-jdk-name="13" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

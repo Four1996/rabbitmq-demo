@@ -1,0 +1,9 @@
+#配置rabbitmq的基本信息  ip 端口 username passwrod
+
+spring:
+  rabbitmq:
+    host: localhost #ip
+    port: 5672
+    username: panhao
+    password: panhao
+    virtual-host: /ph
