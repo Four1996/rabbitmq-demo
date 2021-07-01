@@ -62,8 +62,7 @@ public class Producer_Topics {
             3、routingKey：路由键，绑定规则
                     如果交换机的类型为fanout，routingkey设置为""
          */
-        //队列1的绑定 error
-        //routing key 系统的名称.日志的级别
+        //队列1 routing key 系统的名称.日志的级别
         //需求：所有error级别的日志存入数据库，所有order系统的日志存入数据库
         channel.queueBind(queue1Name,exchangeName,"#.error");
         channel.queueBind(queue1Name,exchangeName,"order.*");
