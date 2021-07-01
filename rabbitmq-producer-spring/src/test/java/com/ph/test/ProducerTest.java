@@ -91,4 +91,14 @@ public class ProducerTest {
         //3、发送消息
         rabbitTemplate.convertAndSend("test_exchange_confirm","confirm","message comfirm....");
     }
+
+    @Test
+    public void testSend(){
+
+        for (int i=0;i<10;i++){
+            // 发送消息
+            rabbitTemplate.convertAndSend("test_exchange_confirm","confirm","message comfirm....");
+        }
+
+    }
 }
