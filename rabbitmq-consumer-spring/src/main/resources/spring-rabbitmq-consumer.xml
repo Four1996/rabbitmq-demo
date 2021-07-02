@@ -25,7 +25,9 @@
     <!--定义监听器容器-->
     <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual" prefetch="1">
 <!--        <rabbit:listener ref="ackListener" queue-names="test_queue_confirm"></rabbit:listener>-->
-        <rabbit:listener ref="qosListener" queue-names="test_queue_confirm"></rabbit:listener>
+<!--        <rabbit:listener ref="qosListener" queue-names="test_queue_confirm"></rabbit:listener>-->
+        <!--定义监听器，监听正常队列-->
+        <rabbit:listener ref="dlxListener" queue-names="test_queue_dlx"></rabbit:listener>
     </rabbit:listener-container>
 
 </beans>

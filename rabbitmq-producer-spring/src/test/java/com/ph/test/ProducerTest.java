@@ -3,7 +3,6 @@ package com.ph.test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.AmqpException;
-import org.springframework.amqp.core.Correlation;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
@@ -149,5 +148,24 @@ public class ProducerTest {
 
             }
         }
+    }
+    /**
+        发送测试死信消息：
+            1、过期时间
+            2、长度限制
+            3、消息拒收
+     */
+    @Test
+    public void testDlx(){
+        // 1、设置过期时间，死信消息
+        // rabbitTemplate.convertAndSend("test_exchange_dlx","test.dlx.hehe","wdnmd，我会成为死信消息吗？");
+
+        // 2、长度限制
+        // for (int i=0;i<20;i++){
+        //     rabbitTemplate.convertAndSend("test_exchange_dlx","test.dlx.hehe","heihei，我会成为死信消息吗？");
+        // }
+        // 3、消息拒收
+        rabbitTemplate.convertAndSend("test_exchange_dlx","test.dlx.hehe","hehe，我会成为死信消息吗？");
+
     }
 }

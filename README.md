@@ -19,3 +19,9 @@ rabbitmq简单练习<br/>
 2、基本信息在yml中配置（rabbitmq主机地址、端口号、用户名、密码、虚拟机路径）,队列交互机以及绑定关系在配置类中使用Bean的方式配置<br/>
 3、生产端直接注入RabbitTemlplate完成消息发送<br/>
 4、消费端直接使用@RabbitListener完成消息接受。<br/>
+<br/>
+**死信队列**<br/>
+消息成为<font color='red'>死信</font>的三种情况：<br/>
+1、队列消息长度到达限制<br/>
+2、消费者拒接消费消息，basicNack/basicReject，并且不把消息重新放入原目标队列，requeue=false；<br/>
+3、原队列存在消息过期设置，消息到达超时时间未被消费。<br/>

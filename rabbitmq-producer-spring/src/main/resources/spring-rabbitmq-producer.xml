@@ -49,4 +49,47 @@
             <rabbit:binding pattern="ttl.#" queue="test_queue_ttl"></rabbit:binding>
         </rabbit:bindings>
     </rabbit:topic-exchange>
+
+    <!--
+        死信队列：
+            1、声明正常的队列(test_queue_dlx)和交换机(test_exchange_dlx)
+            2、声明死信队列(queue_dlx)和死信交换机(exchange_dlx)
+            3、正常队列绑定死信交换机
+                设置两个参数：
+                    * x-dead-letter-exchange：死信交换机名称
+                    * x-dead-letter-routing-key：发送给死信交换机的routing key
+    -->
+    <!--
+    1、声明正常的队列(test_queue_dlx)和交换机(test_exchange_dlx)
+    -->
+    <rabbit:queue id="test_queue_dlx" name="test_queue_dlx">
+        <!--
+            3、正常队列绑定死信交换机：设置两个参数
+        -->
+        <rabbit:queue-arguments>
+            <!--3.1 x-dead-letter-exchange: 死信交换机的名称-->
+            <entry key="x-dead-letter-exchange" value="exchange_dlx"></entry>
+            <!--3.2 x-dead-letter-routing-key: 发送给死信交换机的routing key-->
+            <entry key="x-dead-letter-routing-key" value="dlx.hehe"></entry>
+
+            <!--4.1 设置队列的过期时间 ttl-->
+            <entry key="x-message-ttl" value="10000" value-type="java.lang.Integer"/>
+            <!--4.2 设置队列的长度限制 max-length-->
+            <entry key="x-max-length" value="10" value-type="java.lang.Integer"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+    <rabbit:topic-exchange name="test_exchange_dlx">
+        <rabbit:bindings>
+            <rabbit:binding pattern="test.dlx.#" queue="test_queue_dlx"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+    <!--
+    2、声明死信队列(queue_dlx)和死信交换机(exchange_dlx)
+    -->
+    <rabbit:queue id="queue_dlx" name="queue_dlx"></rabbit:queue>
+    <rabbit:topic-exchange name="exchange_dlx">
+        <rabbit:bindings>
+            <rabbit:binding pattern="dlx.#" queue="queue_dlx"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
 </beans>
