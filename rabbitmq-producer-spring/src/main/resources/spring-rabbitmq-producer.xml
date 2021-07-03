@@ -92,4 +92,33 @@
             <rabbit:binding pattern="dlx.#" queue="queue_dlx"></rabbit:binding>
         </rabbit:bindings>
     </rabbit:topic-exchange>
+
+    <!--
+    延迟队列：
+        1、定义正常的交换机（order_exchange）和队列（order_queue）
+        2、定义死信交换机(order_exchange_dlx)和队列(order_queue_dlx)
+        3、绑定，设置正常队列过期时间为30分钟
+    -->
+    <!--1、定义正常交换机(order_exchange)和队列(order_queue)-->
+    <rabbit:queue id="order_queue" name="order_queue">
+        <rabbit:queue-arguments>
+            <entry key="x-dead-letter-exchange" value="order_exchange_dlx"/>
+            <entry key="x-dead-letter-routing-key" value="dlx.order.cancle"/>
+            <!--3、绑定，设置正常队列过期时间为30分钟-->
+            <entry key="x-message-ttl" value="10000" value-type="java.lang.Integer"/>
+        </rabbit:queue-arguments>
+    </rabbit:queue>
+    <rabbit:topic-exchange name="order_exchange">
+        <rabbit:bindings>
+            <rabbit:binding pattern="order.#" queue="order_queue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+    <!--2、定义死信交换机(order_exchange_dlx)和队列(order_queue_dlx)-->
+    <rabbit:queue id="order_queue_dlx" name="order_queue_dlx">
+    </rabbit:queue>
+    <rabbit:topic-exchange name="order_exchange_dlx">
+        <rabbit:bindings>
+            <rabbit:binding pattern="dlx.order.#" queue="order_queue_dlx"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
 </beans>

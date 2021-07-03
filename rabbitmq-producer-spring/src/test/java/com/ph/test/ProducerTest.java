@@ -168,4 +168,16 @@ public class ProducerTest {
         rabbitTemplate.convertAndSend("test_exchange_dlx","test.dlx.hehe","hehe，我会成为死信消息吗？");
 
     }
+    @Test
+    public void testDelay() throws InterruptedException {
+        // 1、发送订单消息。将来是在订单系统中，下单成功后发送消息。
+        rabbitTemplate.convertAndSend("order_exchange","order.hehe","订单信息：id=1，time=2021/7/2 16:42:50");
+
+        // 2、打印倒计时10s
+        for (int i=10;i>0;i--){
+            System.out.println(i+"...");
+            Thread.sleep(1000);
+        }
+    }
 }
+
