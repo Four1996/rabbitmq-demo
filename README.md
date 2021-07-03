@@ -27,3 +27,5 @@ rabbitmq简单练习<br/>
 3、原队列存在消息过期设置，消息到达超时时间未被消费。<br/>
 <br/>
 **消息补偿**<br/>
+流程图：<br/>
+![Image text](https://github.com/Four1996/rabbitmq-demo/blob/master/imgfolder/RabbitMQ%E6%B6%88%E6%81%AF%E8%A1%A5%E5%81%BF.png)
